@@ -1,7 +1,5 @@
 import React from "react";
-import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { removeExpense } from "../actions/expenses";
 
 const ExpensesListItem = ({ dispatch, id, description, amount, createdAt }) => (
   <div>
@@ -13,12 +11,5 @@ const ExpensesListItem = ({ dispatch, id, description, amount, createdAt }) => (
     </p>
   </div>
 );
-
-// const mapStateTpProps = (state) => {
-//   return {
-//     expenses: state.expenses,
-//     filters: state.filters,
-//   };
-// };
 
 export default ExpensesListItem;
