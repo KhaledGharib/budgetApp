@@ -14,8 +14,8 @@ class ExpenseListfilters extends React.Component {
     calenderFocuesd: null,
   };
   onDatesChange = ({ startDate, endDate }) => {
-    this.props.dispatch(setStartDate(startDate));
-    this.props.dispatch(setEndDate(endDate));
+    this.props.dispatch(setStartDate(startDate.toISOString(true)));
+    this.props.dispatch(setEndDate(endDate.toISOString(true)));
   };
   onFocusChange = (calenderFocuesd) => {
     this.setState(() => ({ calenderFocuesd }));
@@ -74,10 +74,13 @@ class ExpenseListfilters extends React.Component {
           endDateId="MyDatePickerEnd"
         />
 */
-const mapStateToProps = (state) => {
-  return {
-    filters: state.filters,
-  };
-};
+import moment from "moment";
+const mapStateToProps = (state) => ({
+  filters: {
+    ...state.filters,
+    startDate: moment(state.filters.startDate),
+    endDate: moment(state.filters.endDate),
+  },
+});
 
 export default connect(mapStateToProps)(ExpenseListfilters);
