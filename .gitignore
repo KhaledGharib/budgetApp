@@ -1,6 +1,5 @@
 node_modules
 src/playground
-src/tests
 public/bundle.js
 public/bundle.js.map
 public/styles.css

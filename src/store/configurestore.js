@@ -1,13 +1,21 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
-import expenessReducer from "../reducers/expenses";
-import filtersReaducer from "../reducers/filters";
+import expensesReducer from "../reducers/expenses";
+import filtersReducer from "../reducers/filters";
+
+const defaultMiddlewareConfig = {
+  serializableCheck: {
+    ignoredPaths: ["filters.startDate", "filters.endDate"],
+  },
+};
 
 export default () => {
   const store = configureStore({
     reducer: {
-      expenses: expenessReducer,
-      filters: filtersReaducer,
+      expenses: expensesReducer,
+      filters: filtersReducer,
     },
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware(defaultMiddlewareConfig),
   });
   return store;
 };
