@@ -1,25 +1,55 @@
+import {
+  child,
+  get,
+  onValue,
+  push,
+  ref,
+  remove,
+  update,
+} from "firebase/database";
 import { v4 as uuidv4 } from "uuid";
+import db from "../db/firebase";
 
-export const addExpense = ({
-  description = "",
-  note = "",
-  amount = 0,
-  createdAt = 0,
-} = {}) => ({
+export const addExpense = (expense) => ({
   type: "addExpense",
-  expense: {
-    id: uuidv4(),
-    description,
-    note,
-    amount,
-    createdAt,
-  },
+  expense,
 });
+
+export const startAddExpense = (expenseData = {}) => {
+  return (dispatch) => {
+    const {
+      description = "",
+      note = "",
+      amount = 0,
+      createdAt = 0,
+    } = expenseData;
+
+    const expense = { description, note, amount, createdAt };
+
+    push(ref(db, "expenses"), expense).then((newRef) => {
+      dispatch(
+        addExpense({
+          id: newRef.key,
+          ...expense,
+        })
+      );
+    });
+  };
+};
+
 // remove expense
 export const removeExpense = ({ id } = {}) => ({
   type: "removeExpense",
   id,
 });
+
+export const startRemoveExpense = ({ id }) => {
+  return (dispatch) => {
+    return remove(ref(db, `expenses/${id}`)).then(() => {
+      dispatch(removeExpense({ id }));
+    });
+  };
+};
 
 // ** Edit Expense **
 export const editExpense = (id, updates) => ({
@@ -27,3 +57,35 @@ export const editExpense = (id, updates) => ({
   id,
   updates,
 });
+
+export const startEditExpense = (id, updates) => {
+  return (dispatch) => {
+    return update(ref(db, `expenses/${id}`), updates).then(() => {
+      dispatch(editExpense({ id, updates }));
+    });
+  };
+};
+
+export const setExpenses = (expenses) => ({
+  type: "setExpenses",
+  expenses,
+});
+
+export const startSetExpenses = (dispatch) => {
+  return (dispatch) => {
+    return get(ref(db, "expenses")).then((snapshot) => {
+      if (snapshot.exists()) {
+        const expenses = [];
+        snapshot.forEach((childSnapshot) => {
+          expenses.push({
+            id: childSnapshot.key,
+            ...childSnapshot.val(),
+          });
+        });
+        dispatch(setExpenses(expenses));
+      } else {
+        console.log("No data available");
+      }
+    });
+  };
+};

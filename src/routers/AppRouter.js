@@ -1,25 +1,76 @@
-import React from "react";
-import { BrowserRouter, Link, NavLink, Route, Routes } from "react-router-dom";
+import { createBrowserHistory } from "history";
+import React, { Fragment } from "react";
+import {
+  BrowserRouter,
+  Link,
+  NavLink,
+  Route,
+  Routes,
+  unstable_HistoryRouter as HistoryRouter,
+} from "react-router-dom";
+
 import AddExpensePage from "../components/AddExpensePage";
 import EditExpensePage from "../components/EditExpensePage";
 import ExpenseDashboardPage from "../components/ExpenseDashboardPage";
 import Header from "../components/Header";
 import HelpExpensePage from "../components/HelpExpensePage";
+import LoginPage from "../components/LoginPage";
 import PageNotFound from "../components/PageNotFound";
+import PrivateRoute from "./PrivateRoute";
+///
 
+///
+
+export const history = createBrowserHistory();
 const AppRouter = () => (
-  <BrowserRouter>
+  <HistoryRouter history={history}>
     <div>
-      <Header />
       <Routes>
-        <Route path="/" element={<ExpenseDashboardPage />} />
-        <Route path="/help" element={<HelpExpensePage />} />
-        <Route path="/add" element={<AddExpensePage />} />
-        <Route path="/edit/:id" element={<EditExpensePage />} />
+        <Route path="/" element={<LoginPage />} />
+        <Route
+          path="dashboard"
+          element={
+            <PrivateRoute>
+              <ExpenseDashboardPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/edit"
+          element={
+            <PrivateRoute>
+              <EditExpensePage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="help"
+          element={
+            // <PrivateRoute>
+            <HelpExpensePage />
+            // </PrivateRoute>
+          }
+        />
+        <Route
+          path="add"
+          element={
+            // <PrivateRoute>
+            <AddExpensePage />
+            // </PrivateRoute>
+          }
+        />
+        <Route
+          path="edit/:id"
+          element={
+            // <PrivateRoute>
+            <EditExpensePage />
+            // </PrivateRoute>
+          }
+        />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </div>
-  </BrowserRouter>
+  </HistoryRouter>
 );
 
 export default AppRouter;

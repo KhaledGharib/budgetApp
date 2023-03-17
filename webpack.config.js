@@ -23,6 +23,7 @@ module.exports = (env, argv) => {
             },
           },
         },
+
         {
           // Adding ? sign to reset
           test: /\.s?css$/,

@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { redirect, useNavigate } from "react-router-dom";
-import { addExpense } from "../actions/expenses";
+import { startAddExpense } from "../actions/expenses";
 import ExpensesForm from "./ExpensesForm";
 
 const AddExpensePage = (props) => {
@@ -11,7 +11,7 @@ const AddExpensePage = (props) => {
       <h1>Add Expenses</h1>
       <ExpensesForm
         onSubmit={(expenses) => {
-          props.dispatch(addExpense(expenses));
+          props.dispatch(startAddExpense(expenses));
           navigate("/");
           // console.log(expenses);
         }}
