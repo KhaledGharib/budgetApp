@@ -1,8 +1,13 @@
-import { applyMiddleware, configureStore, createSlice } from "@reduxjs/toolkit";
+import {
+  applyMiddleware,
+  compose,
+  configureStore,
+  createSlice,
+} from "@reduxjs/toolkit";
 import thunk from "redux-thunk";
+import authReducer from "../reducers/auth";
 import expensesReducer from "../reducers/expenses";
 import filtersReducer from "../reducers/filters";
-import authReducer from "../reducers/auth";
 
 const defaultMiddlewareConfig = {
   serializableCheck: {
