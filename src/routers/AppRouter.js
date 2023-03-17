@@ -8,15 +8,14 @@ import {
   Routes,
   unstable_HistoryRouter as HistoryRouter,
 } from "react-router-dom";
-
 import AddExpensePage from "../components/AddExpensePage";
 import EditExpensePage from "../components/EditExpensePage";
 import ExpenseDashboardPage from "../components/ExpenseDashboardPage";
 import Header from "../components/Header";
-import HelpExpensePage from "../components/HelpExpensePage";
 import LoginPage from "../components/LoginPage";
 import PageNotFound from "../components/PageNotFound";
 import PrivateRoute from "./PrivateRoute";
+import PublicRoute from "./PublicRoute";
 ///
 
 ///
@@ -26,7 +25,14 @@ const AppRouter = () => (
   <HistoryRouter history={history}>
     <div>
       <Routes>
-        <Route path="/" element={<LoginPage />} />
+        <Route
+          path="/"
+          element={
+            <PublicRoute>
+              <LoginPage />
+            </PublicRoute>
+          }
+        />
         <Route
           path="dashboard"
           element={
@@ -43,14 +49,7 @@ const AppRouter = () => (
             </PrivateRoute>
           }
         />
-        <Route
-          path="help"
-          element={
-            // <PrivateRoute>
-            <HelpExpensePage />
-            // </PrivateRoute>
-          }
-        />
+
         <Route
           path="add"
           element={
