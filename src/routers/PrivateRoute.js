@@ -23,10 +23,6 @@
 //   />
 // );
 
-// // export const PrivateRoute = (props) => {
-// //   <Route {...props} />;
-// // };
-
 // const mapStateToProps = (state) => ({
 //   isAuthenticated: !!state.auth.uid,
 // });
