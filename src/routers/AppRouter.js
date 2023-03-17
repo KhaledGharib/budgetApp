@@ -12,7 +12,6 @@ import {
 import AddExpensePage from "../components/AddExpensePage";
 import EditExpensePage from "../components/EditExpensePage";
 import ExpenseDashboardPage from "../components/ExpenseDashboardPage";
-import HelpExpensePage from "../components/HelpExpensePage";
 import LoginPage from "../components/LoginPage";
 import PageNotFound from "../components/PageNotFound";
 import PrivateRoute from "./PrivateRoute";
@@ -49,14 +48,6 @@ const AppRouter = () => (
             <PrivateRoute>
               <EditExpensePage />
             </PrivateRoute>
-          }
-        />
-        <Route
-          path="help"
-          element={
-            // <PrivateRoute>
-            <HelpExpensePage />
-            // </PrivateRoute>
           }
         />
         <Route

@@ -1,7 +1,7 @@
 import React from "react";
+import { connect } from "react-redux";
 import { BrowserRouter, Link, NavLink, Route, Routes } from "react-router-dom";
 import { startLogout } from "../actions/auth";
-import { connect } from "react-redux";
 const Header = ({ startLogout }) => (
   <header>
     <h1>Expensify</h1>
@@ -18,14 +18,6 @@ const Header = ({ startLogout }) => (
       end
     >
       Add Expense
-    </NavLink>
-
-    <NavLink
-      to="/help"
-      className={({ isActive }) => (isActive ? "is-active" : undefined)}
-      end
-    >
-      Help
     </NavLink>
     <button onClick={startLogout}>logout</button>
   </header>

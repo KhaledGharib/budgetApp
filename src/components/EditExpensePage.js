@@ -13,6 +13,8 @@ const EditExpensePage = (props) => {
   // console.log(selectedExpense);
   return (
     <div>
+      <h1>Edit Expenses</h1>
+
       <ExpensesForm
         expense={selectedExpense}
         onSubmit={(expense) => {
