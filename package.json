@@ -5,12 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "server": "live-server public/",
     "build:dev": "webpack --mode development",
     "build": "webpack --mode production",
     "dev-server": "webpack serve --mode development",
-    "start": "node server/server.js",
-    "heroku-postbuild": "npm run build"
+    "server": "node server/server.js"
   },
   "keywords": [],
   "author": "",
@@ -50,9 +48,7 @@
     "uuid": "^9.0.0",
     "validator": "^13.9.0",
     "webpack": "^5.75.0",
-    "webpack-cli": "^5.0.1"
-  },
-  "devDependencies": {
-    "webpack-dev-server": "2.5.1"
+    "webpack-cli": "^5.0.1",
+    "webpack-dev-server": "^4.11.1"
   }
 }

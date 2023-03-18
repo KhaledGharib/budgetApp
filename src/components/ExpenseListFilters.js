@@ -51,7 +51,14 @@ class ExpenseListfilters extends React.Component {
               <option value="amount">Amount</option>
             </select>
           </div>
-          <div className="input-group__item">
+          <div className="input-group__item"></div>
+        </div>
+      </div>
+    );
+  }
+}
+
+/*
             <DateRangePicker
               startDate={this.props.filters.startDate}
               endDate={this.props.filters.endDate}
@@ -64,12 +71,7 @@ class ExpenseListfilters extends React.Component {
               startDateId="MyDatePickerStart"
               endDateId="MyDatePickerEnd"
             />
-          </div>
-        </div>
-      </div>
-    );
-  }
-}
+*/
 
 import moment from "moment";
 const mapStateToProps = (state) => ({
