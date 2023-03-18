@@ -1,0 +1,21 @@
+.button {
+  background: $blue;
+  color: white;
+  border: none;
+  padding: $s-size;
+  font-weight: 300;
+  font-size: $font-size-large;
+  display: inline-block;
+  text-decoration: none;
+  line-height: 1;
+}
+
+.button-logout {
+  background: none;
+  margin: 0;
+  padding: 0;
+}
+
+.button-remove {
+  background: #888;
+}

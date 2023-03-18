@@ -5,6 +5,7 @@ import { createRoot } from "react-dom/client";
 import { Provider } from "react-redux";
 import { login, logout } from "./actions/auth";
 import { startSetExpenses } from "./actions/expenses";
+import LoadingPage from "./components/LoadingPage";
 import AppRouter, { history } from "./routers/AppRouter";
 import getVisibleExpenses from "./selectors/expenses";
 import configurestore from "./store/configurestore";
@@ -34,7 +35,7 @@ const renderApp = () => {
   }
 };
 
-root.render(<p>Loading ...</p>);
+root.render(<LoadingPage />);
 
 auth.onAuthStateChanged((user) => {
   if (user) {
