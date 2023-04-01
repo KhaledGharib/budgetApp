@@ -11,11 +11,11 @@
 <img src="https://img.shields.io/badge/-redux-764abc?logo=redux">
 </p>
 
-![screenshot](./readme/Animation2.gif)
+![screenshot](readme/Animation2.gif)
 
 ## **Take look at 👇**
 
-## [Live demo]('https://xed-expensify.netlify.app/')✨
+## [Live demo](https://xed-expensify.netlify.app/)✨
 
 ## Get your own clone
 
